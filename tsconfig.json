@@ -5,6 +5,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types"]
   },

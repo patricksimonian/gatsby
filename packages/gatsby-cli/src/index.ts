@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-// babel-preset-env doesn't find this import if you
-// use require() with backtick strings so use the es6 syntax
 import "@babel/polyfill"
-const semver = require(`semver`)
-const util = require(`util`)
+import semver from "semver"
+import util from "util"
 
 const useJsonLogger = process.argv.slice(2).some(arg => arg.includes(`json`))
 
@@ -12,10 +10,10 @@ if (useJsonLogger) {
   process.env.GATSBY_LOGGER = `json`
 }
 
-const createCli = require(`./create-cli`)
-const report = require(`./reporter`)
-const pkg = require(`../package.json`)
-const updateNotifier = require(`update-notifier`)
+import createCli from "./create-cli"
+import report from "./reporter"
+import pkg from "../package.json"
+import updateNotifier from "update-notifier"
 
 // Check if update is available
 updateNotifier({ pkg }).notify({ isGlobal: true })
@@ -36,7 +34,7 @@ process.on(`unhandledRejection`, reason => {
   // across versions and crash
 
   // reason can be anything, it can be a message, an object, ANYTHING!
-  // we convert it to an error object so we don't crash on structured error validation
+  // we convtert it o an error object so we don't crash on structured error validation
   if (!(reason instanceof Error)) {
     reason = new Error(util.format(reason))
   }
